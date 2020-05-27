@@ -1,20 +1,14 @@
 // Given an array nums, write a function to move all 0's to the end of it while maintaining the relative order of the non-zero elements.
 
 const moveZeroes = (nums) => {
-  let length = nums.length;
-  let index = nums.indexOf(0);
-  let count = 0;
+  let zeroInx = 0;
 
-  while (index > -1) {
-    nums.splice(index, 1);
-    index = nums.indexOf(0);
-    count++;
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i] !== 0) {
+      [nums[i], nums[zeroInx]] = [nums[zeroInx], nums[i]];
+      zeroInx++;
+    }
   }
-
-  for (let i = 0; i < count; i++) {
-    nums.push(0);
-  }
-
   return nums;
 };
 
